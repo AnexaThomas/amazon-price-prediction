@@ -1,0 +1,337 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+   <!-- body -->
+   <body class="main-layout">
+      <!-- loader  -->
+      <div class="loader_bg">
+         <div class="loader"><img src="{% static 'images/loading.gif' %}" alt="#" /></div>
+      </div>
+      <!-- end loader -->
+      <!-- header -->
+      <header>
+         <!-- header inner -->
+         <div class="header">
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                     <div class="full">
+                        <div class="center-desk">
+                           <div class="logo">
+                              <a href="{% url 'home' %}"><img src="{% static 'images/logo3.jpg' %}" alt="#" /></a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                     <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarsExample04">
+                           <ul class="navbar-nav mr-auto">
+                              <li class="nav-item active">
+                                 <a class="nav-link" href="{% url 'home' %}">Home</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="{% url 'about' %}">About</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="{% url 'mobile' %}">Mobile</a>
+                              </li>
+
+                             
+                              <li class="nav-item">
+                                 <a class="nav-link" href="{% url 'product' %}">Products</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="{% url 'fb' %}">Feedback</a>
+                              </li>
+                              
+                           
+                              <li class="nav-item">
+                                 <a class="nav-link" href="{% url 'register' %}">Register</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="{% url 'login' %}">Login</a>
+                              </li>
+                           </ul>
+                        </div>
+                     </nav>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </header>
+      <!-- end header inner -->
+      <!-- end header -->
+      <!-- banner -->
+      <section class="banner_main">
+         <div id="banner1" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+               <li data-target="#banner1" data-slide-to="0" class="active"></li>
+               <li data-target="#banner1" data-slide-to="1"></li>
+               <li data-target="#banner1" data-slide-to="2"></li>
+               <li data-target="#banner1" data-slide-to="3"></li>
+               <li data-target="#banner1" data-slide-to="4"></li>
+            </ol>
+            <div class="carousel-inner">
+               <div class="carousel-item active">
+                  <div class="container">
+                     <div class="carousel-caption">
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="text-bg">
+                                 <span>Mobile and its</span>
+                                 <h1>Accessories</h1>
+                                 <p>In todays’ time, owning a mobile phone has become a necessity. People of all ages can use a mobile for work or entertainment purposes.  </p>
+                                  <a href="{% url 'register' %}">Register </a>
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="text_img">
+                                 <figure><img src="{% static 'images/mobiles1.png' %}" alt="#"/></figure>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="carousel-item">
+                  <div class="container">
+                     <div class="carousel-caption">
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="text-bg">
+                                 <span>Mobile and its</span>
+                                 <h1>Accessories</h1>
+                                 <p>Teachers, doctors, students, journalists,  homemakers, housemaids, and various other people own the device and use it according to their requirements. A mobile not just keeps you connected to your family and friends but you can also play games, browse the internet, attend online classes, click pictures, and do a lot of other things on it.</p>
+                                 <a href="{% url 'register' %}">Register </a>
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="text_img">
+                                 <figure><img src="{% static 'images/mobiles2.png' %}" alt="#"/></figure>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="carousel-item">
+                  <div class="container">
+                     <div class="carousel-caption">
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="text-bg">
+                                 <span>Mobile and its</span>
+                                 <h1>Accessories</h1>
+                                 <p>On Gadgets Now, there is a wide spectrum of mobiles available from renowned brands like Apple, OnePlus, Realme, Xiaomi, OnePlus, Vivo, Lava, Oppo, Samsung, and more.</p>
+                                 <a href="{% url 'register' %}">Register </a>
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="text_img">
+                                 <figure><img src="{% static 'images/mobiles3.jpg' %}" alt="#"/></figure>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="carousel-item">
+                  <div class="container">
+                     <div class="carousel-caption">
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="text-bg">
+                                 <span>Mobile and its</span>
+                                 <h1>Accessories</h1>
+                                 <p>Mobile phones are no more merely a part of our lives. Whether it's to stay connected with friends and family or to keep abreast of important developments around the world, mobiles are no longer for sending a text or making a call. </p>
+                                 <a href="{% url 'register' %}">Register </a>
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="text_img">
+                                 <figure><img src="{% static 'images/mobiles4.jpg' %}" alt="#"/></figure>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="carousel-item">
+                  <div class="container">
+                     <div class="carousel-caption">
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="text-bg">
+                                 <span>Mobile and its</span>
+                                 <h1>Accessories</h1>
+                                 <p> From budget to state-of-the-art smartphones; indigenous names to global big-wigs - a whole universe of mobiles await you</p>
+                                 <a href="{% url 'register' %}">Register </a>
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="text_img">
+                                 <figure><img src="{% static 'images/mobiles.jpg' %}" alt="#"/></figure>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <a class="carousel-control-prev" href="#banner1" role="button" data-slide="prev">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </a>
+            <a class="carousel-control-next" href="#banner1" role="button" data-slide="next">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </a>
+         </div>
+      </section>
+      <!-- end banner -->
+      
+      <!-- products -->
+      <div  class="products">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Our Products</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="our_products">
+                     <div class="row">
+                        {% for m in mob %}
+                        <div class="col-md-4 margin_bottom1">
+                           <div class="product_box">
+                              <figure><img src="{{m.mobimg.url}}" alt="#"/></figure>
+                              <h3>{{m.mobname}}</h3>
+                              <p>{{m.mobprice}}</p>
+                           </div>
+                        </div>
+                        {% endfor %}
+                        <div class="col-md-12">
+                           <a class="read_more" href="#">See More</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end products -->
+      <!-- laptop  section -->
+      <div class="laptop">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="titlepage">
+                     <p>Mobile phones and accessories</p>
+                     <h2>Up to 40% off !</h2>
+                     
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="laptop_box">
+                     <figure><img src="{% static 'images/pc.png' %}" alt="#"/></figure>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      </div>
+      <!-- end laptop  section -->
+      <!-- customer -->
+      <div class="customer">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Customer Review</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <div id="myCarousel" class="carousel slide customer_Carousel " data-ride="carousel">
+                     <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                     </ol>
+                     <div class="carousel-inner">
+                        <div class="carousel-item active">
+                           <div class="container">
+                              <div class="carousel-caption ">
+                                 <div class="row">
+                                    <div class="col-md-9 offset-md-3">
+                                       <div class="test_box">
+                                          <i><img src="{% static 'images/cos.png' %}" alt="#"/></i>
+                                          <h4>Sandy Miller</h4>
+                                          <p>I recently reviewed the 10T, but as I pointed out, it's not a direct successor to the OnePlus 10 Pro, as the lack of the "Pro" suffix from the name strongly hints. It's more of a side-grade, for lack of a better term, with the newer flagship chipset from Qualcomm, faster charging, but also some downgrades in other areas, most obviously the camera system.</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="carousel-item">
+                           <div class="container">
+                              <div class="carousel-caption">
+                                 <div class="row">
+                                    <div class="col-md-9 offset-md-3">
+                                       <div class="test_box">
+                                          <i><img src="{% static 'images/cos.png' %}" alt="#"/></i>
+                                          <h4>Sascha Segan</h4>
+                                          <p>Whether you're looking for a big or small phone, entry-level or top-of-the-line, Android offers options for everyone. And unlike Apple's rigid release cycle, Google's hardware partners unleash a seemingly endless stream of new devices year-round. But therein lies the problem: With so many options out there, how do you settle on the right one? </p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="carousel-item">
+                           <div class="container">
+                              <div class="carousel-caption">
+                                 <div class="row">
+                                    <div class="col-md-9 offset-md-3">
+                                       <div class="test_box">
+                                          <i><img src="{% static 'images/cos.png' %}" alt="#"/></i>
+                                          <h4> Sheldon Pinto</h4>
+                                          <p>The Samsung Galaxy S22+ currently strikes the best balance of power, connectivity, and price for Android phones. With an excellent camera, a bright screen, a fast processor, and stellar 5G reception, it's the mainstream leader. When tech writers buy Android phones, they often buy Google Pixels. The Pixel 6 Pro is fast, durable, and has great battery life, but the real draw here is the Google software. Pixel phones get new Android features first, and their applications tend to work very harmoniously together in a way more similar to iPhones compared with other Android phones.</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                     <span class="sr-only">Previous</span>
+                     </a>
+                     <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                     <span class="sr-only">Next</span>
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end customer -->
+
+      
+{% endblock %}
+

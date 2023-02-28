@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Home page</title>
+  </head>
+  <style>
+    button {
+      display: inline-block;
+      background-color: #7b38d8;
+      border-radius: 10px;
+      border: 4px double #cccccc;
+      color: #eeeeee;
+      text-align: center;
+      font-size: 28px;
+      padding: 20px;
+      width: 200px;
+      transition: all 0.5s;
+      cursor: pointer;
+      margin: 5px;
+    }
+    button span {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      transition: 0.5s;
+    }
+    button span:after {
+      content: '\00bb';
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: -20px;
+      transition: 0.5s;
+    }
+    button:hover {
+      background-color: #f7c2f9;
+    }
+    button:hover span {
+      padding-right: 25px;
+    }
+    button:hover span:after {
+      opacity: 1;
+      right: 0;
+    }
+    html {
+      box-sizing: border-box;
+    }
+    
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+    
+    body {
+      background-color: #fff;
+      font-family: helvetica, sans-serif;
+      margin: 4% 10%
+    }
+    
+    label {
+      display:block;
+      margin-top:2em;
+      font-size: 0.9em;
+      color:#777;
+    }
+    
+    .dropdown {
+      position: relative;
+      display:block;
+      margin-top:0.5em;
+      overflow:hidden;
+      width:100%;
+      max-width:100%;
+    }
+    
+    select {
+      /* Make sure the select is wider than the container so we can clip the arrow */
+      width:110%;
+      max-width:110%;
+      min-width:110%;
+      /* Remove select styling */
+      appearance: none;
+      -webkit-appearance: none;
+      /* Ugly Firefox way of doing it */
+      -moz-appearance: window;
+      text-indent: 0.01px;
+      text-overflow: "";
+      /* Magic font size number to prevent iOS text zoom */
+      font-size:16px;
+      font-weight: bold;
+      background:none;
+      border: none;
+      color: #444;
+      outline: none;
+      /* Padding works surpringly well */
+      padding: .4em 19% .4em .8em;
+      font-family: helvetica, sans-serif;
+      line-height:1.2;
+      margin:.2em;
+    }
+    
+    /* This hides native dropdown button arrow in IE */
+    select::-ms-expand {
+      display: none;
+    }
+    
+     /* Custom arrow - could be an image, SVG, icon font, etc. */
+    .dropdown:after {
+      background: none;
+      color: #bbb;
+      content: "\25BC";
+      font-size: .7em;
+      padding:0;
+      position: absolute;
+      right: 1em;
+      top: 1.2em;
+      bottom: .3em;
+      z-index: 1;
+      /* This hack makes the select behind the arrow clickable in some browsers */
+      pointer-events:none;
+    }
+    
+    /* Hover style - tricky because we're clipping the overflow */
+    .dropdown:hover {
+      border:1px solid #888;
+    }
+    
+    /* Focus style */
+    select:focus {
+      outline: none;
+      box-shadow: 0 0 3px 3px rgba(180,222,250, .85);
+    }
+    
+    /* This hides focus around selected option in FF */
+    select:-moz-focusring {
+      color: transparent;
+      text-shadow: 0 0 0 #000;
+    }
+    
+     /* These are just demo button-y styles, style as you like */
+    .button {
+      border: 1px solid #bbb;
+      border-radius: .3em;
+      box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+      background: #f3f3f3; /* Old browsers */
+      background: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 100%); /* FF3.6+ */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e5e5e5)); /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* Opera 11.10+ */
+      background: -ms-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* IE10+ */
+      background: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%); /* W3C */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+    }
+    body {
+      background-image: url('https://images.unsplash.com/photo-1645212763353-601f622d90ed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Z29vZCUyMGltYWdlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    </style>
+  <body>
+
+    <center>
+    <h1>Amazon Prediction</h1>
+    <form action="{% url 'result' %}" >
+      {% csrf_token %}
+      
+      <label for="battery_power" class="wrapper"><font color="black">Battery Capacity</font>
+      <div class="button dropdown">
+      <select name="battery_power" id="battery_power"required="">
+        <option value="">Choose Your Option</option>
+        <option value="1954">less than 1000mAh</option>
+        <option value="842">2000-2999mAh</option>
+        <option value="1478">3000-3999mAh</option>
+        <option value="1021">4000-4999mAh</option>
+        <option value="707">5000-5999mAh</option>
+        <option value="1821">60000mAh & Above</option>
+        
+      </select>
+    </div>
+  </label>
+      
+      
+      <label for="pc"class="wrapper"><font color="black">Secondary camera</font>
+      <div class="button dropdown">
+      <select name="pc" id="pc"required="">
+        <option value="">Choose Your Option</option>
+        <option value="0">Not Needed</option>
+        <option value="14">Below 5 MP</option>
+        <option value="7">5-8 MP</option>
+        <option value="6">8-10 MP</option>
+        <option value="10">10 MP & Above</option>
+       
+      </select>
+    </div>
+  </label>
+      
+  <input type="hidden" class="form-control" id="blue"value="0" name="blue">
+
+   
+      {% comment %} <label for="blue"class="wrapper"><font color="black">Secondary camera</font>
+      <div class="button dropdown">
+      <select name="blue" id="blue"required="">
+        <option value="">Choose Your Option</option>
+        <option value="0">Not Needed</option>
+        <option value="1">Below 5 MP</option>
+        <option value="1">5-8 MP</option>
+        <option value="1">8-10 MP</option>
+        <option value="1">10 MP & Above</option>
+       
+      </select>
+    </div>
+  </label> {% endcomment %}
+      <label for="four_g"class="wrapper"><font color="black">Front Camera</font>
+      <div class="button dropdown">
+      <select name="four_g" id="four_g"required="">
+        <option value="">Choose Your Option</option>
+          <option value="0">Not Needed</option>
+          <option value="1">Below 5 MP</option>
+          <option value="1">5-8 MP</option>
+          <option value="1">8-10 MP</option>
+          <option value="1">10 MP & Above</option>
+       
+      </select>
+    </div>
+  </label>
+     
+      <label for="clock_speed"class="wrapper"><font color="black">Network Type</font>
+      <div class="button dropdown"required="">
+      <select name="clock_speed" id="clock_speed">
+        <option value="">Choose Your Option</option>
+        <option value="0.5">2G</option>
+        <option value="1.2">3G</option>
+        <option value="2.8">4G</option>
+        <option value="2.2">4G VOLITE</option>
+        <option value="1.7">5G</option>
+       
+      </select>
+    </div>
+  </label>
+   
+      
+      <label for="fc"class="wrapper"><font color="black">Processor Brand</font>
+      <div class="button dropdown">
+      <select name="fc" id="fc"required="">
+        <option value ="">Choose Your Option</option>
+        <option value ="0">Google</option>
+        <option value="13">ARM</option>
+        <option value ="2">Mediatek</option>
+        <option value="7">Snapdragon</option>
+       
+      </select>
+    </div>
+  </label>
+      <label for="n_cores"class="wrapper"><font color="black">Operating System</font>
+      <div class="button dropdown">
+      <select name="n_cores" id="n_cores"required="">
+        <option value="">Choose Your Option</option>
+        <option value="4">Android</option>
+        <option value="1">Blackberry</option>
+        <option value="5">iOS</option>
+        <option value="3">kaiOS</option>
+        <option value="8">Linux</option>
+        <option value="4">Symbain</option>
+        <option value="7">Windows</option>
+       
+      </select>
+    </div>
+  </label>
+      
+
+      <!-- <p>fc:</p>
+      <input type="text" name="fc">
+      <br> -->
+      
+
+      <!-- <p>four_g:</p>
+      <input type="text" name="four_g">
+      <br> -->
+      <label for="int_memory"class="wrapper"><font color="black">Memory Storage</font>
+      <div class="button dropdown">
+      <select name="int_memory" id="int_memory"required="">
+        <option value="">Choose Your Option</option>
+        <option value="9">Less than 1 GB</option>
+        <option value="7">1 GB-2 GB</option>
+        <option value="10">2 GB-3 GB</option>
+        <option value="33">3 GB-4 GB</option>
+        <option value="45">4 GB & Above</option>
+       
+      </select>
+    </div>
+  </label>
+      <label for="ram"class="wrapper"><font color="black">Ram</font>
+      <div class="button dropdown">
+      <select name="ram" id="ram"required="">
+        <option value="">Choose Your Option</option>
+        <option value="1099">1 GB</option>
+        <option value="1411">2 GB</option>
+        <option value="2603">3 GB</option>
+        <option value="3946">4 GB</option>
+        <option value="3826">5 GB & Above</option>
+       
+       
+      </select>
+    </div>
+  </label>
+
+      <!-- <p>int_memory</p>
+      <input type="text" name="int_memory">
+      <br> -->
+
+      <!-- <p>m_dep:</p>
+      <input type="text" name="m_dep">
+      <br> -->
+      <label for="m_dep"class="wrapper"><font color="black">Mobile Phone Shooting Modes</font>
+      <div class="button dropdown">
+      <select name="m_dep" id="m_dep"required="">
+        <option value="">Choose Your Option</option>
+        <option value="0.9">Automatic</option>
+        <option value="1">High Dynamic Range</option>
+        <option value="0.9">Panorama</option>
+        <option value="0.8">Portrait</option>
+        
+
+
+
+
+
+
+
+
+      </select>
+    </div>
+  </label>
+  
+
+      <!-- <p>mobile_wt:</p>
+      <input type="text" name="mobile_wt">
+      <br> -->
+      <label for="mobile_wt"class="wrapper"><font color="black">Mobile Weight</font>
+      <div class="button dropdown">
+      <select name="mobile_wt" id="mobile_wt"required="">
+        <option value="">Choose Your Option</option>
+        <option value="145">below 100g</option>
+        <option value="164">100g-120g</option>
+        <option value="131">120g-140g</option>
+        <option value="136">140g-160g</option>
+        <option value="139">160g & above</option>
+       
+      </select>
+    </div>
+  </label>
+     
+
+      <!-- <p>n_cores:</p>
+      <input type="text" name="n_cores">
+      <br> -->
+      
+      <!-- <p>pc:</p>
+      <input type="text" name="pc">
+      <br> -->
+      
+      <!-- <p>px_height:</p>
+      <input type="text" name="px_height">
+      <br> -->
+
+      <label for="px_height"class="wrapper"><font color="black">Pixel Height </font>
+      <div class="button dropdown">
+      <select name="px_height" id="px_height"required="">
+        <option value="">Choose Your Option</option>
+        <option value="386">Below 100</option>
+        <option value="1208">100-400</option>
+        <option value="1263">400-600</option>
+        <option value="248">600-800</option>
+        <option value="974">800-1000</option>
+        <option value="1314">1000 & Above</option>
+       
+      </select>
+    </div>
+  </label>
+      <label for="px_width"class="wrapper"><font color="black">Pixel Width</font>
+      <div class="button dropdown">
+      <select name="px_width" id="px_width"required="">
+        <option value="">Choose Your Option</option>
+        <option value="1149">Below 100</option>
+        <option value="1212">100-400</option>
+        <option value="1716">400-600</option>
+        <option value="1018">800-1000</option>
+        <option value="1854">1000 & Above</option>
+       
+      </select>
+    </div>
+  </label>
+  <label for="dual_sim"class="wrapper"><font color="black">Dual Sim</font>
+    <div class="button dropdown">
+    <select name="dual_sim" id="dual_sim"required="">
+      <option value="">Choose Your Option</option>
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+     
+    </select>
+  </div>
+</label>
+
+
+      <!-- <p>px_width</p>
+      <input type="text" name="px_width">
+      <br> -->
+
+      <!-- <p>Ram</p>
+      <input type="text" name="ram">
+      <br> -->
+      
+
+      <!-- <p>sc_h</p>
+      <input type="text" name="sc_h">
+      <br> -->
+      <label for="sc_h"class="wrapper"><font color="black">Screen Height & Width</font>
+      <div class="button dropdown">
+      <select name="sc_h" id="sc_h"required="">
+        <option value="">Choose Your Option</option>
+        <option value="16">320 x 480 pixels</option>
+        <option value="8">375 x 812 pixels</option>
+        <option value="11">375 x 667 pixels</option>
+        <option value="14">320 x 568 pixels</option>
+        <option value="10">414 x 736 pixels</option>
+       
+      </select>
+    </div>
+  </label>
+
+      <!-- <p>sc_w</p>
+      <input type="text" name="sc_w">
+      <br> -->
+      <label for="sc_w"class="wrapper"><font color="black">Processor speed</font>
+      <div class="button dropdown">
+      <select name="sc_w" id="sc_w"required="">
+        <option value="">Choose Your Option</option>
+        <option value="3">375 pts</option>
+        <option value="0">390 pts</option>
+        <option value="2">414 pts</option>
+        <option value="8">428 pts</option>
+       
+      </select>
+    </div>
+  </label>
+      <!-- <p>talk_time</p>
+      <input type="text" name="talk_time">
+      <br> -->
+      <label for="talk_time"class="wrapper"><font color="black">Touch Screen</font>
+      <div class="button dropdown">
+      <select name="talk_time" id="talk_time"required="">
+        <option value="">Choose Your Option</option>
+        <option value="5">Below 30 minutes</option>
+        <option value="10">30-300 minutes</option>
+        <option value="11">300-1000 minutes</option>
+        <option value="18">1000 minutes & Above</option>
+
+       
+      </select>
+    </div>
+  </label>
+  <input type="hidden" class="form-control" id="three_g"value="1" name="three_g">
+
+
+      <!-- <p>three_g</p>
+      <input type="text" name="three_g">
+      <br> -->
+      {% comment %} <label for="three_g"class="wrapper"><font color="black">Longest time after a single charge</font>
+      <div class="button dropdown">
+      <select name="three_g" id="three_g"required="">
+        <option value="">Choose Your Option</option>
+        <option value="1">Needed</option>
+        <option value="0">Not Needed</option>
+       
+      </select>
+    </div>
+  </label> 
+  
+  {% endcomment %}
+      {% comment %} <label for="touch_screen"class="wrapper"><font color="black">Touch Screen</font>
+      <div class="button dropdown">
+      <select name="touch_screen" id="touch_screen"required="">
+        <option value="">Choose Your Option</option>
+        <option value="0">No Needed</option>
+        <option value="1">Needed</option>
+       
+      </select>
+    </div>
+  </label> {% endcomment %}
+       <!-- <p>touch_screen</p>
+      <input type="text" name="touch_screen">
+      <br> -->
+
+      <!-- <p>wifi</p>
+      <input type="text" name="wifi">
+      <br>
+
+      <br> -->
+  
+      {% comment %} <label for="wifi"class="wrapper"><font color="black">Wifi</font>
+  
+      <select name="wifi" id="wifi"required="" hidden>
+        <option value="">Choose Your Option</option>
+        <option value="1">Needed</option>
+        <option value="0">Not Needed</option>
+       
+      </select>
+  </label> {% endcomment %}
+  <input type="hidden" class="form-control" id="touch_screen"value="0" name="touch_screen">
+
+  <input type="hidden" class="form-control" id="wifi"value="1" name="wifi">
+
+      
+      <br>
+
+
+  <button>
+    <span>Submit</span>
+  </button>
+    </form>
+    </center>
+  </body>
+</html>
